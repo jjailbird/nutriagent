@@ -1,0 +1,44 @@
+{
+  "name": "nutriagent",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "d3": "^4.3.0",
+    "formsy-material-ui": "^0.5.0",
+    "formsy-react": "^0.18.1",
+    "material-ui": "^0.15.4",
+    "meteor-node-stubs": "~0.2.0",
+    "path": "^0.12.7",
+    "query-string": "^4.2.3",
+    "radium": "^0.18.1",
+    "react": "^15.3.2",
+    "react-addons-pure-render-mixin": "^15.3.2",
+    "react-d3": "^0.4.0",
+    "react-d3-basic": "^1.6.11",
+    "react-d3-library": "^1.1.7",
+    "react-dom": "^15.3.2",
+    "react-komposer": "^1.13.1",
+    "react-mixin": "^2.0.2",
+    "react-responsive": "^1.1.5",
+    "react-router": "^2.8.1",
+    "react-sticky": "^5.0.5",
+    "react-tap-event-plugin": "^1.0.0",
+    "react-title-component": "^1.0.1",
+    "react-toggle-display": "^2.1.1",
+    "react-ultimate-pagination": "^0.8.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-import-resolver-meteor": "^0.2.4",
+    "eslint-plugin-import": "^1.11.1",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-meteor": "^3.6.0",
+    "eslint-plugin-react": "^5.2.2"
+  }
+}
