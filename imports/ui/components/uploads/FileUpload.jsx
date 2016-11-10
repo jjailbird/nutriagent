@@ -10,6 +10,7 @@ import Title from 'react-title-component';
 import trackerReact from 'meteor/ultimatejs:tracker-react';
 import Slider from 'material-ui/Slider';
 import ToggleDisplay from 'react-toggle-display';
+import { UserFiles } from '../../../api/upload/userfiles.js';
 
 const styles = {
   root: {
@@ -58,22 +59,18 @@ class FileUpload extends trackerReact(Component) {
       // We upload only one file, in case
       // there was multiple files selected
       const file = e.currentTarget.files[0];
-      // file.updatedAt = 'test';
       if (file) {
-        // console.log('file object', file);
-        file.updatedAt = new Date();
         const uploadInstance = UserFiles.insert({
           file,
           meta: {
             // locator: this.props.fileLocator,
             userId: Meteor.userId(), // Optional, used to check on server for file tampering
+          
           },
           streams: 'dynamic',
           chunkSize: 'dynamic',
           allowWebWorkers: true, // If you see issues with uploads, change this to false
-          // updatedAt: 'test',
         }, false);
-        // console.log('uploadInstance:', uploadInstance);
         this.setState({
           uploading: uploadInstance, // Keep track of this instance to use below
           inProgress: true, // Show the progress bar now
