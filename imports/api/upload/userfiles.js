@@ -7,6 +7,7 @@ export const UserFiles = new FilesCollection({
   // schema: new SimpleSchema(defaultSchema),
   // permissions: 777,
   // parentDirPermissions: 777,
+  public: true,
   storagePath: '../nutriagent.data/uploads/',
   allowClientCode: true, // Disallow remove files from client
   onBeforeUpload(file) {
