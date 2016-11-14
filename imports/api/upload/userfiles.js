@@ -8,6 +8,7 @@ export const UserFiles = new FilesCollection({
   // permissions: 777,
   // parentDirPermissions: 777,
   public: true,
+  downloadRoute: '/nutriagent.data/uploads/',
   storagePath: '../nutriagent.data/uploads/',
   allowClientCode: true, // Disallow remove files from client
   onBeforeUpload(file) {

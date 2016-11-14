@@ -12,11 +12,12 @@ if (Meteor.isServer) {
   });
   Meteor.methods({
     'RemoveFile'(fileid) {
+      check(fileid, String);
       UserFiles.remove({ _id: fileid });
     },
     'RenameFile'(fileid, filename) {
-      // check(fileid, Number);
-      // check(filename, String);
+      check(fileid, String);
+      check(filename, String);
       UserFiles.update({ _id: fileid }, { $set: { name: filename } });
     },
   });

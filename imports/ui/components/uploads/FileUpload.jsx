@@ -105,7 +105,7 @@ class FileUpload extends trackerReact(Component) {
         });
 
         uploadInstance.on('progress', (progress, fileObj) => {
-          console.log(`Upload Percentage: ${progress}`);
+          // console.log(`Upload Percentage: ${progress}`);
           // Update our progress bar
           this.setState({
             progress,
