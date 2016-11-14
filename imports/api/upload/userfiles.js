@@ -1,5 +1,5 @@
 /* eslint-disable prefer-arrow-callback, func-names */
-import { Mongo } from 'meteor/mongo';
+// import { Mongo } from 'meteor/mongo';
 
 export const UserFiles = new FilesCollection({
   debug: false,
@@ -7,8 +7,8 @@ export const UserFiles = new FilesCollection({
   // schema: new SimpleSchema(defaultSchema),
   // permissions: 777,
   // parentDirPermissions: 777,
-  public: true,
-  downloadRoute: '/uploads/',
+  // public: true,
+  // downloadRoute: '/uploads/',
   storagePath: '/data/nutriagent/uploads/',
   allowClientCode: true, // Disallow remove files from client
   onBeforeUpload(file) {
