@@ -8,8 +8,8 @@ export const UserFiles = new FilesCollection({
   // permissions: 777,
   // parentDirPermissions: 777,
   public: true,
-  downloadRoute: '/nutriagent.data/uploads/',
-  storagePath: '../nutriagent.data/uploads/',
+  downloadRoute: '/data/nutriagent/uploads/',
+  storagePath: '/data/nutriagent/uploads/',
   allowClientCode: true, // Disallow remove files from client
   onBeforeUpload(file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats

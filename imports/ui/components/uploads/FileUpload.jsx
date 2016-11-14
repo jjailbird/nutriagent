@@ -79,15 +79,15 @@ class FileUpload extends trackerReact(Component) {
         // These are the event functions, don't need most of them
         // ,it shows where we are in the process
         uploadInstance.on('start', () => {
-          console.log('Starting');
+          // console.log('Starting');
         });
 
         uploadInstance.on('end', (error, fileObj) => {
-          console.log('On end File Object: ', fileObj);
+          // console.log('On end File Object: ', fileObj);
         });
 
         uploadInstance.on('uploaded', (error, fileObj) => {
-          console.log('uploaded: ', fileObj);
+          //console.log('uploaded: ', fileObj);
 
           // Remove the filename from the upload box
           this.refs.fileinput.value = '';
