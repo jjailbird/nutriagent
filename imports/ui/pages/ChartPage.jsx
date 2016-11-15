@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Divider from 'material-ui/Divider';
 import Title from 'react-title-component';
 
-import Bar from '../components/charts/Bar.jsx';
+import LabelLineChart from '../components/charts/LabelLineChart.jsx';
 
 const styles = {
   root: {
@@ -27,9 +27,9 @@ export default class ChartPage extends Component {
     return (
       <div style={styles.root}>
         <Title render={(previousTitle) => `CHART - ${previousTitle}`} />
-        <h2>FOOD Table</h2>
+        <h2>Custom Label Charts</h2>
         <Divider />
-        <Bar />
+        <LabelLineChart />
       </div>
     );
   }

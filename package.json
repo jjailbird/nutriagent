@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-     "lint": "eslint .",
+    "lint": "eslint .",
     "pretest": "npm run lint --silent"
   },
   "dependencies": {
@@ -31,7 +31,8 @@
     "react-tap-event-plugin": "^1.0.0",
     "react-title-component": "^1.0.1",
     "react-toggle-display": "^2.1.1",
-    "react-ultimate-pagination": "^0.8.0"
+    "react-ultimate-pagination": "^0.8.0",
+    "recharts": "^0.17.1"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
