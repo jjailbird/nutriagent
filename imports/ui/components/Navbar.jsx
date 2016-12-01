@@ -33,9 +33,7 @@ const naviItems = [
   { title: 'HOME', route: '/home' },
   { title: 'Food', route: '/food' },
   { title: 'Upload', route: '/upload' },
-  { title: 'Chart', route: '/chart' },
-  { title: 'TEST', route: '/test' },
-  { title: 'Linear', route: '/chart/linear' },
+  { title: 'EChart', route: '/chart/echart' },
   { title: 'SIGNIN', route: '/signin' },
   { title: 'SIGNUP', route: '/signup' },
 ];

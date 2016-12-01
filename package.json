@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
-    "d3": "^4.3.0",
+    "echarts-for-react": "^1.1.6",
     "formsy-material-ui": "^0.5.0",
     "formsy-react": "^0.18.1",
     "material-ui": "^0.15.4",
@@ -19,9 +19,6 @@
     "radium": "^0.18.1",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
-    "react-d3": "^0.4.0",
-    "react-d3-basic": "^1.6.11",
-    "react-d3-library": "^1.1.7",
     "react-dom": "^15.3.2",
     "react-komposer": "^1.13.1",
     "react-mixin": "^2.0.2",
@@ -31,8 +28,7 @@
     "react-tap-event-plugin": "^1.0.0",
     "react-title-component": "^1.0.1",
     "react-toggle-display": "^2.1.1",
-    "react-ultimate-pagination": "^0.8.0",
-    "recharts": "^0.17.1"
+    "react-ultimate-pagination": "^0.8.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",

@@ -6,9 +6,7 @@ import SignUp from '../../ui/components/accounts/SignUp.jsx';
 import Home from '../../ui/pages/Home.jsx';
 import FoodContainer from '../../ui/pages/FoodContainer.jsx';
 import UploadFile from '../../ui/components/uploads/FileUpload.jsx';
-import Chart from '../../ui/pages/ChartPage.jsx';
-import ChartLinear from '../../ui/pages/ChartLinearPage.jsx';
-import Test from '../../ui/pages/TestPage.jsx';
+import EchartPage from '../../ui/pages/EchartPage.jsx';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
@@ -17,9 +15,7 @@ export const renderRoutes = () => (
       <Route path="home" component={Home} />
       <Route path="food(/:query)" component={FoodContainer} />
       <Route path="upload" component={UploadFile} />
-      <Route path="chart" component={Chart} />
-      <Route path="test" component={Test} />
-      <Route path="chart/linear" component={ChartLinear} />
+      <Route path="chart/echart" component={EchartPage} />
       <Route path="signin" component={SignIn} />
       <Route path="signup" component={SignUp} />
     </Route>
