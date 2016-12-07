@@ -55,7 +55,7 @@ export default class Echart extends Component {
       // console.log(jsonData);
       // const lookup = {};
       const items = jsonData1;
-      const seriesHight = {
+      const seriesHeight = {
         name: '키(남자)',
         type: 'line',
         smooth: true,
@@ -73,19 +73,19 @@ export default class Echart extends Component {
         const item = items[i];
         // xAxisData.push(item['age_under(month)'].toString());
         option.xAxis[0].data.push(getMonth2YearString(item['age_under(month)']));
-        seriesHight.data.push(item['height(cm)']);
+        seriesHeight.data.push(item['height(cm)']);
         seriesWeight.data.push(item['weight(kg)']);
       }
       option.legend.data.push('키(남자)');
       option.legend.data.push('몸무게(남자)');
-      option.series.push(seriesHight);
+      option.series.push(seriesHeight);
       option.series.push(seriesWeight);
     }
     if (jsonData2.length > 0) {
       // console.log(jsonData);
       // const lookup = {};
       const items = jsonData2;
-      const seriesHight = {
+      const seriesHeight = {
         name: '키(여자)',
         type: 'line',
         smooth: true,
@@ -103,14 +103,34 @@ export default class Echart extends Component {
         const item = items[i];
         // xAxisData.push(item['age_under(month)'].toString());
         option.xAxis[0].data.push(getMonth2YearString(item['age_under(month)']));
-        seriesHight.data.push(item['height(cm)']);
+        seriesHeight.data.push(item['height(cm)']);
         seriesWeight.data.push(item['weight(kg)']);
       }
       option.legend.data.push('키(여자)');
       option.legend.data.push('몸무게(여자)');
-      option.series.push(seriesHight);
+      option.series.push(seriesHeight);
       option.series.push(seriesWeight);
     }
+
+    const myHeight = {
+      name: '키(내아이)',
+      type: 'line',
+      smooth: true,
+      itemStyle: { normal: { areaStyle: { type: 'default' } } },
+      data: [49.2, 50.4, 52.4, 56],
+    };
+    const myWeight = {
+      name: '몸무게(내아이)',
+      type: 'line',
+      smooth: true,
+      itemStyle: { normal: { areaStyle: { type: 'default' } } },
+      data: [3, 4.5, 5, 6],
+    };
+
+    option.legend.data.push('키(내아이)');
+    option.legend.data.push('몸무게(내아이)');
+    option.series.push(myHeight);
+    option.series.push(myWeight);
 
     return option;
   }
