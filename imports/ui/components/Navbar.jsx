@@ -32,6 +32,7 @@ const styles = {
 const naviItems = [
   { title: 'HOME', route: '/home' },
   { title: 'Food', route: '/food' },
+  { title: 'FoodCalc', route: '/foodcalc' },
   { title: 'Upload', route: '/upload' },
   { title: 'EChart', route: '/chart/echart' },
   { title: 'SIGNIN', route: '/signin' },
@@ -141,7 +142,7 @@ class Navbar extends Component {
     return (
       <div>
         <MediaQuery orientation="landscape">
-          <Sticky>
+          <Sticky id="nav_stikcy">
             <AppBar
               title="Nutri Agent"
               titleStyle={{ cursor: 'pointer' }}

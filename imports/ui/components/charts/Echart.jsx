@@ -32,7 +32,7 @@ export default class Echart extends Component {
       },
       toolbox: {
         feature: {
-          saveAsImage: {},
+          saveAsImage: { title: 'SAVE' },
         },
       },
       xAxis: [

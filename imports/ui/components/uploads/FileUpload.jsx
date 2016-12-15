@@ -44,6 +44,8 @@ class FileUpload extends trackerReact(Component) {
       subscription: {
         files: Meteor.subscribe('files.all'),
       },
+      lightboxIsOpen: false,
+      currentImage: 0,
     };
     this.openFileDialog = this.openFileDialog.bind(this);
     this.uploadIt = this.uploadIt.bind(this);
@@ -65,7 +67,7 @@ class FileUpload extends trackerReact(Component) {
           meta: {
             // locator: this.props.fileLocator,
             userId: Meteor.userId(), // Optional, used to check on server for file tampering
-          
+
           },
           streams: 'dynamic',
           chunkSize: 'dynamic',
@@ -87,7 +89,7 @@ class FileUpload extends trackerReact(Component) {
         });
 
         uploadInstance.on('uploaded', (error, fileObj) => {
-          //console.log('uploaded: ', fileObj);
+          // console.log('uploaded: ', fileObj);
 
           // Remove the filename from the upload box
           this.refs.fileinput.value = '';
@@ -152,6 +154,7 @@ class FileUpload extends trackerReact(Component) {
       const fileCursors = UserFiles.find({}, { sort: { updatedAt: -1 } }).fetch();
       // Run through each file that the user has stored
       // (make sure the subscription only sends files owned by this user)
+      let lightboxImages = [];
       return (
         <div style={styles.root}>
           <Title render={(previousTitle) => `UPLOAD - ${previousTitle}`} />
@@ -185,6 +188,7 @@ class FileUpload extends trackerReact(Component) {
             >
             {fileCursors.map((aFile, key) => {
               // console.log('A file: ', aFile.link(), aFile.get('name'));
+              lightboxImages.push({});
               const link = UserFiles.findOne({ _id: aFile._id }).link();
               return (
                 <IndividualFile

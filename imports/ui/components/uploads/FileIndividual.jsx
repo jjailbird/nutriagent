@@ -2,15 +2,27 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+// import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconDelete from 'material-ui/svg-icons/action/delete';
+import { ModalManager } from 'react-dynamic-modal';
+import FileViewer from './FileViewer.jsx';
+
+// const ThemeManager = new mui.Styles.ThemeManager();
 
 export default class IndividualFile extends Component {
   constructor(props) {
     super(props);
     this.removeFile = this.removeFile.bind(this);
     this.renameFile = this.renameFile.bind(this);
+    this.openFileViewer = this.openFileViewer.bind(this);
   }
+  /*
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme(),
+    };
+  }
+  */
   removeFile() {
     const conf = confirm('Are you sure you want to delete the file?') || false;
     if (conf === true) {
@@ -33,10 +45,14 @@ export default class IndividualFile extends Component {
 
     if (!_.isEmpty(prompt)) {
       Meteor.call('RenameFile', this.props.fileId, prompt, (err, res) => {
-        if (err)
+        if (err) {
           console.log(err);
+        }
       });
     }
+  }
+  openFileViewer(src, caption) {
+    ModalManager.open(<FileViewer src={src} caption={caption} onRequestClose={() => true} />);
   }
   render() {
     return (
@@ -44,13 +60,26 @@ export default class IndividualFile extends Component {
         key={this.props.fileId}
         title={this.props.fileName}
         subtitle={<span>by <b>{this.props.fileSize}</b></span>}
-        actionIcon={<IconButton onTouchTap={this.removeFile}><IconDelete color="red" /></IconButton>}
+        actionIcon={
+          <IconButton onTouchTap={this.removeFile}><IconDelete color="red" /></IconButton>
+        }
       >
-        <img src={this.props.fileUrl} />
+        <img
+          src={this.props.fileUrl}
+          alt={this.props.fileName}
+          style={{ cursor: 'pointer' }}
+          onTouchTap={() => {
+            this.openFileViewer(this.props.fileUrl, this.props.fileName);
+          }}
+        />
       </GridTile>
     );
   }
 }
+
+IndividualFile.childContextTypes = {
+  // muiTheme: React.PropTypes.object.isRequired,
+};
 
 IndividualFile.propTypes = {
   fileName: React.PropTypes.string.isRequired,

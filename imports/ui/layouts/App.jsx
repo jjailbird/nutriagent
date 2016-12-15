@@ -1,13 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import Title from 'react-title-component';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import baseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 // import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import Navbar from '../components/Navbar.jsx';
 import { orange100, orange500, orange700 } from 'material-ui/styles/colors';
 import { StickyContainer } from 'react-sticky';
+
+// import './App.css';
 
 const CONNECTION_ISSUE_TIMEOUT = 1000;
 const muiThemeGreen = getMuiTheme({
@@ -50,13 +52,15 @@ class App extends Component {
     } = this.props;
 
     return (
-      <StickyContainer>
-        <Title render="Nutri Agent" />
-        <Navbar user={this.props.user} />
-        <div className="detail">
-          {this.props.children}
-        </div>
-      </StickyContainer>
+      <MuiThemeProvider muiTheme={muiThemeGreen}>
+        <StickyContainer id="sticky_container">
+          <Title render="Nutri Agent" />
+          <Navbar user={this.props.user} />
+          <div className="detail">
+            {this.props.children}
+          </div>
+        </StickyContainer>
+      </MuiThemeProvider>
     );
   }
 }
@@ -65,10 +69,11 @@ App.propTypes = {
   connected: React.PropTypes.bool,
   user: React.PropTypes.object,
   children: React.PropTypes.element,
+  location: React.PropTypes.object,
 };
 
 App.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
+  muiTheme: React.PropTypes.object, //.isRequired,
   location: React.PropTypes.object,
 };
 

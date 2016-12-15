@@ -2,8 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import queryString from 'query-string';
 import { FoodData } from '../../api/food/fooddata.js';
-import FoodPage from '../pages/Food.jsx';
-
+import FoodCalcPage from '../pages/FoodCalcPage.jsx';
 
 export default createContainer(({ params: { query } }) => {
   // const config = (query) ? queryString.parse(query) : { limit: 10, skip: 0 };
@@ -44,4 +43,4 @@ export default createContainer(({ params: { query } }) => {
     recordTotal,
     searchText,
   };
-}, FoodPage);
+}, FoodCalcPage);

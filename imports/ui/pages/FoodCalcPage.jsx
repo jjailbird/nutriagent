@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
+import Divider from 'material-ui/Divider';
+import Title from 'react-title-component';
+import styles from '../css/default';
+
+import Paper from 'material-ui/Paper';
+import { BottomNavigation, BottomNavigationItem }
+  from 'material-ui/BottomNavigation';
+import { StickyContainer, Sticky } from 'react-sticky';
+import FlatButton from 'material-ui/FlatButton';
+
 import FoodNameAuto from '../components/foods/FoodNameAuto.jsx';
 import FoodList from '../components/foods/FoodList.jsx';
 import Paging from '../components/Pagination.jsx';
-import Divider from 'material-ui/Divider';
-import Title from 'react-title-component';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
-import styles from '../css/default';
 
-const dataSource1 = ['12345', '23456', '34567'];
+import FontIcon from 'material-ui/FontIcon';
+import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 
-export default class Food extends Component {
+const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
+const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
+const nearbyIcon = <IconLocationOn />;
+
+export default class FoodCalcPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchText: '',
+      showFootMenu: false,
     };
     this.onPageChange = this.onPageChange.bind(this);
     this.onSearchFoodName = this.onSearchFoodName.bind(this);
@@ -31,17 +44,17 @@ export default class Food extends Component {
   }
   onPageChange(value) {
     const searchText = document.getElementById('searchText').value;
-    this.context.router.push(`/food/search=${searchText}&page=${value}`);
+    this.context.router.push(`/foodcalc/search=${searchText}&page=${value}`);
   }
   onSearchFoodName() {
     const searchText = document.getElementById('searchText').value;
-    this.context.router.push(`/food/search=${searchText}`);
+    this.context.router.push(`/foodcalc/search=${searchText}`);
   }
   onTextClear() {
     this.setState({ searchText: '' });
     // this.refs.searchText2.value = '';
     // document.getElementById('searchText').value = '';
-    this.context.router.push('/food');
+    this.context.router.push('/foodcalc');
   }
   handleKeyPress(key) {
     if (key.charCode === 13) {
@@ -50,15 +63,19 @@ export default class Food extends Component {
   }
   render() {
     return (
-      <div style={styles.root}>
-        <Title render={(previousTitle) => `FOOD - ${previousTitle}`} />
-        <h2>FOOD Table</h2>
+      <StickyContainer style={styles.root}>
+        <Title render={(previousTitle) => `FOOD Calulator - ${previousTitle}`} />
+        <h2>FOOD Calculator</h2>
+        <FlatButton
+          label="Sticky TEST"
+          onTouchTap={() => { this.setState({ showFootMenu: !this.state.showFootMenu }); }}
+        />
         <Divider />
         <FoodNameAuto
           ref="searchText"
           id="searchText"
           floatingLabelText="음식 이름"
-          dataSource={dataSource1}
+          /* dataSource={dataSource1} */
           searchText={this.props.searchText}
           onKeyPress={this.handleKeyPress}
           onTextClear={this.onTextClear}
@@ -78,19 +95,44 @@ export default class Food extends Component {
             onChange={this.onPageChange}
           />
         </div>
-      </div>
+        <Sticky
+          style={{ right: 0, bottom: 0, position: 'fixed' }}
+          isActive={this.state.showFootMenu}
+        >
+          <Paper zDepth={1}>
+            <BottomNavigation>
+              <BottomNavigationItem
+                label="Recents"
+                icon={recentsIcon}
+                onTouchTap={() => this.select(0)}
+              />
+              <BottomNavigationItem
+                label="Favorites"
+                icon={favoritesIcon}
+                onTouchTap={() => this.select(1)}
+              />
+              <BottomNavigationItem
+                label="Nearby"
+                icon={nearbyIcon}
+                onTouchTap={() => this.select(2)}
+              />
+            </BottomNavigation>
+          </Paper>
+        </Sticky>
+      </StickyContainer>
     );
   }
 }
 
-Food.contextTypes = {
+FoodCalcPage.contextTypes = {
   router: React.PropTypes.object,
 };
 
-Food.propTypes = {
+FoodCalcPage.propTypes = {
   fooddata: React.PropTypes.array,
   page: React.PropTypes.number,
   pageTotal: React.PropTypes.number,
   recordTotal: React.PropTypes.number,
   searchText: React.PropTypes.string,
 };
+
