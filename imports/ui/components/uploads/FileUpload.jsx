@@ -154,7 +154,6 @@ class FileUpload extends trackerReact(Component) {
       const fileCursors = UserFiles.find({}, { sort: { updatedAt: -1 } }).fetch();
       // Run through each file that the user has stored
       // (make sure the subscription only sends files owned by this user)
-      let lightboxImages = [];
       return (
         <div style={styles.root}>
           <Title render={(previousTitle) => `UPLOAD - ${previousTitle}`} />
@@ -188,7 +187,7 @@ class FileUpload extends trackerReact(Component) {
             >
             {fileCursors.map((aFile, key) => {
               // console.log('A file: ', aFile.link(), aFile.get('name'));
-              lightboxImages.push({});
+              // console.log('aFile', aFile);
               const link = UserFiles.findOne({ _id: aFile._id }).link();
               return (
                 <IndividualFile
@@ -197,6 +196,8 @@ class FileUpload extends trackerReact(Component) {
                   fileUrl={link}
                   fileId={aFile._id}
                   fileSize={aFile.size}
+                  fileType={aFile.type}
+                  fileObj={aFile}
                 />
               );
             })}

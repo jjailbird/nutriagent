@@ -15,23 +15,24 @@ export default class FileViewer extends Component {
           onRequestClose={onRequestClose}
           effect={Effect.ScaleUp}
           style={{
-            overlay: { overflow: 'auto',
-              display: 'table', width: '100%', height: '100%',
-            },
+            overlay: { overflow: 'auto' },
             content: {
-              margin: 'auto auto', backgroundColor: 'rgba(0, 0, 0, 0.3)',
+              margin: 'auto auto', backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              display: 'table', width: '100%', height: '100%',
             },
           }}
         >
-          <div style={{ width: '90%', display: 'table-cell', verticalAlign: 'middle', textAlign: 'center' }}>
+          <div style={{ display: 'table-cell', verticalAlign: 'middle', textAlign: 'center' }}>
+            <h3 style={{ color: '#fff' }}>{this.props.caption}</h3>
             <IconButton
               tooltip="SVG Icon" onTouchTap={ModalManager.close}
-              style={{ position: 'absolute', display: 'inline-block', top: '20px', right: '20px' }}
+              style={{
+                position: 'absolute', display: 'inline-block',
+                fontSize: '18px', fontWeight: 'bold', top: '10px', right: '10px' }}
             >
               <IconOff color="#fff" />
             </IconButton>
-            <h3 style={{ color: '#fff' }}>{this.props.caption}</h3>
-            <img src={src} alt={caption} style={{ maxWidth: '1280px', maxHeight: '1024px' }} />
+            <img src={src} alt={caption} style={{ maxWidth: '90%', maxHeight: '90%' }} />
           </div>
         </Modal>
       </MuiThemeProvider>

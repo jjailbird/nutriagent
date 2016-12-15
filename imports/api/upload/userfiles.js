@@ -12,11 +12,11 @@ export const UserFiles = new FilesCollection({
   storagePath: '/data/nutriagent/uploads/',
   allowClientCode: true, // Disallow remove files from client
   onBeforeUpload(file) {
-    // Allow upload files under 10MB, and only in png/jpg/jpeg formats
-    if (file.size <= 10485760 && /png|jpg|jpeg/i.test(file.extension)) {
+    // Allow upload files under 100MB, and only in png/jpg/jpeg formats
+    if (file.size <= 104857600 && /png|jpg|jpeg|mp4/i.test(file.extension)) {
       return true;
     } else {
-      alert('Please upload image, with size equal or less than 10MB');
+      alert('Please upload image, video, with size equal or less than 10MB');
       return false;
     }
   },
